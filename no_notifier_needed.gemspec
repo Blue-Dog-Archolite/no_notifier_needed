@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/no_notifier_needed/render.rb",
     "lib/no_notifier_needed/send.rb",
     "lib/no_notifier_needed/translate.rb",
+    "no_notifier_needed.gemspec",
     "test/helper.rb",
     "test/test_no_notifier_needed.rb"
   ]
