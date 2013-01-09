@@ -1,8 +1,14 @@
+require 'no_notifier_needed/send'
+require 'no_notifier_needed/translate'
+require 'no_notifier_needed/render'
+
+
 module NoNotifierNeeded
-  require 'no_notifier_needed/send'
-  require 'no_notifier_needed/translate'
-  require 'no_notifier_needed/render'
+  include NoNotifierNeeded::Send
+  include NoNotifierNeeded::Translate
+  include NoNotifierNeeded::Render
 
 end
 
-::Notifier.send(:include, NoNotifierNeeded)
+require 'no_notifier_needed/railtie.rb' if defined?(Rails)
+::ActionMailer::Base.extend NoNotifierNeeded
