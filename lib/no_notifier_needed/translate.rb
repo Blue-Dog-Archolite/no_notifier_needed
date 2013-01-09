@@ -23,8 +23,8 @@ module NoNotifierNeeded
     def get_send_hash
       mailers = ActiveSupport::DescendantsTracker.descendants(ActionMailer::Base)
       send_hash = {}
-      send_hash.merge!(mailers.first.default)
 
+      send_hash.merge!(mailers.first.default)
       send_hash[:subject] = render_template_subject_type(@template)
       send_hash[:to] = @to.nil? ? @user.email : @to
       send_hash[:from] = @from unless @from.nil?
