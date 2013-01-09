@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "no_notifier_needed"
   gem.homepage = "http://github.com/Blue-Dog-Archolit/no_notifier_needed"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A Gem used to reduce the size of Notifier and provide Templates}
+  gem.description = %Q{A work in progress}
   gem.email = "Blue.Dog.Archolite@gmail.com"
   gem.authors = ["Robert R. Meyer"]
   # dependencies defined in Gemfile
