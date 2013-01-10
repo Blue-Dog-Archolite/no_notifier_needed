@@ -9,6 +9,9 @@ rdoc
 doc
 .yardoc
 
+#tags
+tags
+
 # bundler
 .bundle
 
