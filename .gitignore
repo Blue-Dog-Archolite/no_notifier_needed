@@ -10,7 +10,7 @@ doc
 .yardoc
 
 #tags
-tags
+/tags
 
 # bundler
 .bundle
