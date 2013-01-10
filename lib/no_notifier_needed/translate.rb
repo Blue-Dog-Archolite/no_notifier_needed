@@ -21,10 +21,7 @@ module NoNotifierNeeded
     end
 
     def get_send_hash
-      mailers = ActiveSupport::DescendantsTracker.descendants(ActionMailer::Base)
-      send_hash = {}
-
-      send_hash.merge!(mailers.first.default)
+      send_hash = base_send_hash
       send_hash[:subject] = render_template_subject_type(@template)
       send_hash[:to] = @to.nil? ? @user.email : @to
       send_hash[:from] = @from unless @from.nil?
@@ -32,10 +29,16 @@ module NoNotifierNeeded
       send_hash
     end
 
+    def base_send_hash
+      base = {}
+      NoNotifierNeeded::Configuration::VALID_OPTIONS_KEYS.each do |k|
+        base[k] = NoNotifierNeeded.send(k)
+      end
+      base
+    end
+
     def args_to_instance_vars(args)
       #take each key, if a model, make it an @#{model} = model.find(value)
-      known_models = ActiveRecord::Base.send( :subclasses )
-
       #else make it a @#{name}=#{value}
       args.each do |k,v|
         if Object.const_defined?(k.classify) && known_models.include?(k.classify.constantize)
@@ -50,9 +53,11 @@ module NoNotifierNeeded
       end
     end
 
-    def translate_to_hash(which_email, args)
-      known_models = ActiveRecord::Base.send( :subclasses )
+    def known_models
+      @known_models || @known_models = ActiveRecord::Base.send( :subclasses )
+    end
 
+    def translate_to_hash(which_email, args)
       th = {}
       th[:which_email] = which_email
 
