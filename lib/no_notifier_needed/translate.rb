@@ -31,7 +31,7 @@ module NoNotifierNeeded
 
     def base_send_hash
       base = {}
-      NoNotifierNeeded::Configuration::VALID_OPTIONS_KEYS.each do |k|
+      NoNotifierNeeded::Config::VALID_OPTIONS_KEYS.each do |k|
         base[k] = NoNotifierNeeded.send(k)
       end
       base
