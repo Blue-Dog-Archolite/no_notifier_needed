@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-01-11"
+  s.date = "2013-01-14"
   s.description = "A work in progress"
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -32,13 +32,12 @@ Gem::Specification.new do |s|
     "lib/no_notifier_needed/railtie.rb",
     "lib/no_notifier_needed/render.rb",
     "lib/no_notifier_needed/send.rb",
-    "lib/no_notifier_needed/sender.rb",
     "lib/no_notifier_needed/translate.rb",
     "no_notifier_needed.gemspec",
     "test/helper.rb",
     "test/test_no_notifier_needed.rb"
   ]
-  s.homepage = "http://github.com/Blue-Dog-Archolite/no_notifier_needed"
+  s.homepage = "http://github.com/Blue-Dog-Archolit/no_notifier_needed"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
