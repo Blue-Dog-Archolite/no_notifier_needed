@@ -31,4 +31,3 @@ module NoNotifierNeeded
 end
 
 require 'no_notifier_needed/railtie.rb' if defined?(Rails)
-#::ActionMailer::Base.extend NoNotifierNeeded

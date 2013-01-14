@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_no_notifier_needed.rb"
   ]
-  s.homepage = "http://github.com/Blue-Dog-Archolit/no_notifier_needed"
+  s.homepage = "http://github.com/Blue-Dog-Archolite/no_notifier_needed"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
