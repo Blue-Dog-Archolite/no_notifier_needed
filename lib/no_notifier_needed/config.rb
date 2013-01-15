@@ -2,7 +2,8 @@ module NoNotifierNeeded
   module Config
 
     VALID_OPTIONS_KEYS = [
-      :from,
+      :from_email,
+      :from_name,
       :bcc,
       :reply_to,
       :host,

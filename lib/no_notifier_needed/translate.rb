@@ -20,8 +20,8 @@ module NoNotifierNeeded
       "<a href='#{root_link}'>#{title}</a>"
     end
 
-    def get_send_hash
-      send_hash = base_send_hash
+    def get_send_hash(template)
+      send_hash = base_send_hash(template)
       send_hash[:subject] = render_template_subject_type(@template)
       send_hash[:to] = @to.nil? ? @user.email : @to
       send_hash[:from] = @from unless @from.nil?
@@ -34,6 +34,9 @@ module NoNotifierNeeded
       NoNotifierNeeded::Config::VALID_OPTIONS_KEYS.each do |k|
         base[k] = NoNotifierNeeded.send(k)
       end
+      base[:from] = "#{base.delete(:from_name)} <#{base.delete(:from_email)}>"
+      base[:from] = "#{template.from_name} <#{template.from_email}>" if template.from_name && template.from_email
+      base[:reply_to] = "#{template.reply_to}" if template.reply_to
       base
     end
 
