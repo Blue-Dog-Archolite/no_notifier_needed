@@ -7,9 +7,9 @@ module NoNotifierNeeded
         #Pass defaults to allow for this to work
         #::ActionMailer::Base.send(:include, ActionView::Helpers::)
 
-        NoNotifierNeeded::Sender.send(:include, Rails.application.routes.url_helpers) # brings ActionDispatch::Routing::UrlFor
-        NoNotifierNeeded::Sender.send(:include, ActionView::Helpers::UrlHelper)
-        NoNotifierNeeded::Sender.send(:include, ActionView::Helpers::TextHelper)
+        NoNotifierNeeded::Send.send(:include, Rails.application.routes.url_helpers) # brings ActionDispatch::Routing::UrlFor
+        NoNotifierNeeded::Send.send(:include, ActionView::Helpers::UrlHelper)
+        NoNotifierNeeded::Send.send(:include, ActionView::Helpers::TextHelper)
       end
     end
   end

@@ -13,9 +13,15 @@ module NoNotifierNeeded
       if link.match(/http:\/\/[\w*\.]*\//i)
         root_link = link
       else
-        link_broken = link.split('//dabble.co').last
+        splitter = NoNotifierNeeded.send(:host).split('/').last
+
+        link_broken = link.split(splitter).last
         link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
-        root_link = "http://dabble.co/" + link_broken
+        if NoNotifierNeeded.send(:host).last == "/"
+          root_link = NoNotifierNeeded.send(:host) + link_broken
+        else
+          root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
+        end
       end
       "<a href='#{root_link}'>#{title}</a>"
     end
