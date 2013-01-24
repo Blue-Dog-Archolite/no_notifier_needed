@@ -1,31 +1,5 @@
 module NoNotifierNeeded
   module Translate
-    def url_for(destination)
-      unless destination.is_a?(Hash) || destination.match(/_path/i)
-        raise ArgumentError.new(" must pass something that ends with a _path. #{destination} sent.")
-      end
-      to_send = "Rails.application.routes.url_helpers.#{destination}"
-      instance_eval to_send
-    end
-
-    def email_link_to(title, link)
-      return title if link.blank?
-      if link.match(/http:\/\/[\w*\.]*\//i)
-        root_link = link
-      else
-        splitter = NoNotifierNeeded.send(:host).split('/').last
-
-        link_broken = link.split(splitter).last
-        link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
-        if NoNotifierNeeded.send(:host).last == "/"
-          root_link = NoNotifierNeeded.send(:host) + link_broken
-        else
-          root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
-        end
-      end
-      "<a href='#{root_link}'>#{title}</a>"
-    end
-
     def get_send_hash(template)
       send_hash = base_send_hash(template)
       send_hash[:subject] = render_template_subject_type(@template)
@@ -63,7 +37,10 @@ module NoNotifierNeeded
     end
 
     def known_models
-      @known_models || @known_models = ActiveRecord::Base.send( :subclasses )
+      @known_models if @known_models
+      @known_models = ActiveRecord::Base.send( :subclasses )
+      @known_models += @known_models.collect{|k| k.send(:subclass) }.flatten.uniq
+      @known_models.uniq!
     end
   end
 end

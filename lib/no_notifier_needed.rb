@@ -2,6 +2,7 @@ require 'no_notifier_needed/send'
 require 'no_notifier_needed/translate'
 require 'no_notifier_needed/render'
 require 'no_notifier_needed/sender'
+require "no_notifier_needed/url_helper"
 require 'no_notifier_needed/config'
 
 module NoNotifierNeeded
