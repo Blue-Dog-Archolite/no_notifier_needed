@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "0.1.9"
+  s.version = "0.1.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-01-24"
+  s.date = "2013-01-25"
   s.description = "A work in progress"
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "initializers/hotpatches/subclasses.rb.template",
     "lib/no_notifier_needed.rb",
     "lib/no_notifier_needed/config.rb",
     "lib/no_notifier_needed/railtie.rb",
