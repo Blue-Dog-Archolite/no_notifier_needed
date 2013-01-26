@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :killme do
+# task :no_notifier_needed do
 #   # Task goes here
 # end
