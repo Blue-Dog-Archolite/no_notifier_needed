@@ -25,10 +25,9 @@ module NoNotifierNeeded
     sender.send(method, *args, &block)
   end
 
-  # Delegate to Instagram::Client
   def self.respond_to?(method)
     return sender.respond_to?(method) || super
   end
 end
 
-require 'no_notifier_needed/railtie.rb' if defined?(Rails)
+#require 'no_notifier_needed/railtie.rb' if defined?(Rails)
