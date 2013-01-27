@@ -1,8 +1,10 @@
 PATH
   remote: .
   specs:
-    no_notifier_needed (0.1.10)
+    no_notifier_needed (1.0.0)
       haml
+      metric_fu
+      no_notifier_needed
       rails (>= 3.2.11)
 
 GEM
