@@ -1,15 +1,15 @@
 class Notifier < ActionMailer::Base
-  helper :application, :notifier
+#  helper :application, :notifier
 
   #Includes to Help with Rendering
-  #include Rails.application.routes.url_helpers # brings ActionDispatch::Routing::UrlFor
-  #include ActionView::Helpers::UrlHelper
-  #include ActionView::Helpers::TextHelper
-  #include ActionView::Helpers::TagHelper
+  include Rails.application.routes.url_helpers # brings ActionDispatch::Routing::UrlFor
+  include ActionView::Helpers::UrlHelper
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TagHelper
 
-  #include NoNotifierNeeded::Render
-  #include NoNotifierNeeded::Translate
-  #extend NoNotifierNeeded::Send
+  include NoNotifierNeeded::Render
+  include NoNotifierNeeded::Translate
+  extend NoNotifierNeeded::Send
 
   def mcp(email_name, args)
     @template = EmailTemplate.find_by_name(email_name)
@@ -50,5 +50,4 @@ class Notifier < ActionMailer::Base
     end
     "<a href='#{root_link}'>#{title}</a>"
   end
-
 end

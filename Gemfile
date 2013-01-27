@@ -5,6 +5,7 @@ source "http://rubygems.org"
 gem 'haml'
 gem 'rails', '>= 3.2.11'
 gem 'no_notifier_needed', :path => File.expand_path('..', __FILE__)
+gem 'metric_fu'
 
 group :test do
   gem 'debugger'

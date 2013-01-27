@@ -18,7 +18,7 @@ doc
 # jeweler generated
 pkg
 
-test/dummy/log/
+test/dummy/log
 
 # Have editor/IDE/OS specific files you need to ignore? Consider using a global gitignore: 
 #
