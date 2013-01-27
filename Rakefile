@@ -53,6 +53,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
+=end
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
@@ -87,4 +88,3 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-=end
