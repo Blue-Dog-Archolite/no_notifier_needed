@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    no_notifier_needed (1.0.0)
+    no_notifier_needed (2.0.0)
       haml
       metric_fu
       no_notifier_needed
