@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "2.0.1"
+  s.version = "2.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
   s.date = "2013-01-28"
-  s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb. Installing not working correctly yet."
+  s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
     "README.css",
@@ -82,7 +82,7 @@ Gem::Specification.new do |s|
     "test/test_helper.rb",
     "test/test_no_notifier_needed.rb"
   ]
-  s.homepage = "http://github.com/Blue-Dog-Archolit/no_notifier_needed"
+  s.homepage = "http://github.com/Blue-Dog-Archolite/no_notifier_needed"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
@@ -94,7 +94,6 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.2.11"])
-      s.add_runtime_dependency(%q<no_notifier_needed>, [">= 0"])
       s.add_runtime_dependency(%q<metric_fu>, [">= 0"])
       s.add_development_dependency(%q<rails-pry>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
@@ -105,7 +104,6 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.2.11"])
-      s.add_dependency(%q<no_notifier_needed>, [">= 0"])
       s.add_dependency(%q<metric_fu>, [">= 0"])
       s.add_dependency(%q<rails-pry>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
@@ -117,7 +115,6 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.2.11"])
-    s.add_dependency(%q<no_notifier_needed>, [">= 0"])
     s.add_dependency(%q<metric_fu>, [">= 0"])
     s.add_dependency(%q<rails-pry>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
