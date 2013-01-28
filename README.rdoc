@@ -10,17 +10,28 @@ To send a template email:
 Notifier.send_now(email_template_name, any objects the template expects)
 
 Example
-Notifier.send_now("my_email", User.first, City.first) will translate to ->
+  Notifier.send_now("my_email", User.first, City.first, Topic) will translate to ->
 
-@user = User.first
-@city = City.first
+  EmailProcessor 	[{"which_email"=>"lead_intro", "user"=>105391, "city"=>1851, "topic"=>4121}] in Resque
+
+and translated back to @user, @city, @topic
+
+  @user = User.find(105391)
+
+  @city = City.find(1851)
+
+  @topic = Topic.find(4121)
 
 in the email template.
 
 
-Notifier.send_in(5.days, "my_email", ...)
+Use send_in to specify a delay before sending the email:
 
-Notifier.send_at(3.days.from_now, "my_email", ...)
+  Notifier.send_in(5.days, "my_email", ...)
+
+Use send_at to specify a time to send the email:
+
+  Notifier.send_at(3.days.from_now, "my_email", ...)
 
 
 == Contributing to no_notifier_needed
@@ -31,7 +42,6 @@ Notifier.send_at(3.days.from_now, "my_email", ...)
 * Start a feature/bugfix branch.
 * Commit and push until you are happy with your contribution.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 == Copyright
 
