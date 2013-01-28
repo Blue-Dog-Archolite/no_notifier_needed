@@ -6,6 +6,8 @@ class <%= migration_class_name %> < ActiveRecord::Migration
       t.string :from_name
       t.string :bcc
       t.string :reply_to
+      t.string :body
+      t.string :template_type
     end
   end
 

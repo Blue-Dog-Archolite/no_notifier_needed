@@ -1,6 +1,27 @@
 = no_notifier_needed
 
-Description goes here.
+== To Install
+rails generate 'no_notifier_needed:install'
+
+Copies EmailProcessor, no_notifier_needed_initalizer, email_template,
+and email template migration into your rails application.
+
+To send a template email:
+Notifier.send_now(email_template_name, any objects the template expects)
+
+Example
+Notifier.send_now("my_email", User.first, City.first) will translate to ->
+
+@user = User.first
+@city = City.first
+
+in the email template.
+
+
+Notifier.send_in(5.days, "my_email", ...)
+
+Notifier.send_at(3.days.from_now, "my_email", ...)
+
 
 == Contributing to no_notifier_needed
 

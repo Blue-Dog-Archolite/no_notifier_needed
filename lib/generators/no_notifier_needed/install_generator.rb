@@ -6,8 +6,7 @@ require 'rails/generators/active_record'
 module NoNotifierNeeded
   class InstallGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
-
-    source_root File.expand_path("../templates", __FILE__)
+    source_root File.expand_path(File.join(File.dirname(__FILE__), "templates"))
 
     def copy_migration_and_config
 
@@ -15,7 +14,10 @@ module NoNotifierNeeded
       copy_file 'no_notifier_needed_initalizer.rb', 'config/initializers/no_notifier_needed_initalizer.rb'
 
       #Resque workers
-      copy_file "jobs/no_notifier_needed_processor.rb", "app/jobs/no_notifier_needed_processor.rb"
+      copy_file "jobs/email_processor.rb", "app/jobs/email_processor.rb"
+
+      #Active Record File
+      copy_file "email_template.rb", "app/models/email_template.rb"
 
       #create migration
       migration_template 'install.rb', 'db/migrate/install_acts_as_no_notifier_needed.rb'

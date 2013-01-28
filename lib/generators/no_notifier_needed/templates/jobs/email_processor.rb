@@ -1,4 +1,4 @@
-class NoNotifierNeeded
+class EmailProcessor
   @retry_limit = 1
   @retry_delay = 120
   @queue = :no_notifier_needed
