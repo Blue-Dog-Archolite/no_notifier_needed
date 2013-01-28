@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "1.0.0"
+  s.version = "2.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-01-27"
-  s.description = "A work in progress"
+  s.date = "2013-01-28"
+  s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb. Installing not working correctly yet."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
     "README.css",
@@ -27,6 +27,11 @@ Gem::Specification.new do |s|
     "VERSION",
     "initializers/hotpatches/subclasses.rb",
     "initializers/notifier.rb",
+    "lib/generators/no_notifier_needed/install_generator.rb",
+    "lib/generators/no_notifier_needed/templates/email_template.rb",
+    "lib/generators/no_notifier_needed/templates/install.rb",
+    "lib/generators/no_notifier_needed/templates/jobs/email_processor.rb",
+    "lib/generators/no_notifier_needed/templates/no_notifier_needed_initalizer.rb",
     "lib/no_notifier_needed.rb",
     "lib/no_notifier_needed/config.rb",
     "lib/no_notifier_needed/railtie.rb",
@@ -81,7 +86,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "A Gem used to reduce the size of Notifier and provide Templates"
+  s.summary = "A Gem used to remove ActionMailer::Base class and and provide Templates"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
