@@ -4,7 +4,6 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 gem 'haml'
 gem 'rails', '>= 3.2.11'
-gem 'no_notifier_needed', :path => File.expand_path('..', __FILE__)
 gem 'metric_fu'
 
 group :test do

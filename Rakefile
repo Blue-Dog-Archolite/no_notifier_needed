@@ -49,10 +49,10 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "no_notifier_needed"
-  gem.homepage = "http://github.com/Blue-Dog-Archolit/no_notifier_needed"
+  gem.homepage = "http://github.com/Blue-Dog-Archolite/no_notifier_needed"
   gem.license = "MIT"
   gem.summary = %Q{A Gem used to remove ActionMailer::Base class and and provide Templates}
-  gem.description = %Q{A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb. Installing not working correctly yet.}
+  gem.description = %Q{A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb.}
   gem.email = "Blue.Dog.Archolite@gmail.com"
   gem.authors = ["Robert R. Meyer"]
   # dependencies defined in Gemfile
