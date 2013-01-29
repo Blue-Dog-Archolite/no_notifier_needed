@@ -14,6 +14,7 @@ module NoNotifierNeeded
       NoNotifierNeeded::Config::VALID_OPTIONS_KEYS.each do |k|
         base[k] = NoNotifierNeeded.send(k)
       end
+
       base[:from] = "#{base.delete(:from_name)} <#{base.delete(:from_email)}>"
       base[:from] = "#{template.from_name} <#{template.from_email}>" if template.from_name && template.from_email
       base[:reply_to] = "#{template.reply_to}" if template.reply_to

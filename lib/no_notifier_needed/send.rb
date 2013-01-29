@@ -33,7 +33,7 @@ module NoNotifierNeeded
         elsif a.is_a?(Hash)
           a.each{|k,v| th[k.to_sym] = CGI.escapeHTML(v) }
         else
-          raise ArgumentError.new("Unknown values passed to email procesor '#{a}' with ::#{args.inspect}::")
+          raise ArgumentError.new("Unknown values passed to email procesor. \n Object #{a} \n\n WhichEmail: #{which_email} \n Args #{pp args}")
         end
       end
       th
