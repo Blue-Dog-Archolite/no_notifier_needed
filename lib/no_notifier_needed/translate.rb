@@ -5,6 +5,7 @@ module NoNotifierNeeded
       send_hash[:subject] = render_template_subject_type(@template)
       send_hash[:to] = @to.nil? ? @user.email : @to
       send_hash[:from] = @from unless @from.nil?
+      send_hash[:cc] = @cc.nil? ? nil : @cc
       send_hash[:reply_to] = @reply_to unless @reply_to.nil?
       send_hash
     end

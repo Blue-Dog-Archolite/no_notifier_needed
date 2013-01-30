@@ -6,7 +6,6 @@ module NoNotifierNeeded
 
       args_to_instance_vars(args)
 
-      debugger
       mail_is = mail(get_send_hash) do|format|
         format.html { render :inline => render_template_body_type(@template) }
       end
