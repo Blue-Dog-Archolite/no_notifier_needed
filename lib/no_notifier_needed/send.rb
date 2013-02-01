@@ -18,7 +18,7 @@ module NoNotifierNeeded
 
     private
     def known_models
-      @known_models || @known_models = ActiveRecord::Base.send( :subclasses )
+      @known_models || @known_models = ActiveRecord::Base.send( :subclasses ).collect(&:name).uniq.sort
     end
 
     def translate_to_hash(which_email, args)
@@ -28,12 +28,12 @@ module NoNotifierNeeded
       args = args.flatten if args.respond_to?(:flatten)
       args.each do |a|
         next if a.blank?
-        if known_models.include?(a.class)
+        if known_models.include?(a.class.name)
           th[a.class.name.downcase.to_sym] = a.id
         elsif a.is_a?(Hash)
           a.each{|k,v| th[k.to_sym] = CGI.escapeHTML(v) }
         else
-          raise ArgumentError.new("Unknown #{a.class} passed to email procesor. \n Object #{a.inspect} \n\n WhichEmail: #{which_email} \n Args #{pp args} \n\n Known Models #{known_models.collect(&:name).uniq.sort}")
+          raise ArgumentError.new("Unknown #{a.class} passed to email procesor. \n Object #{a.inspect} \n\n WhichEmail: #{which_email} \n Args #{pp args} \n\n Known Models #{known_models}")
         end
       end
       th
