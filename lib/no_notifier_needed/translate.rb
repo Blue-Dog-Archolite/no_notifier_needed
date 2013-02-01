@@ -3,10 +3,10 @@ module NoNotifierNeeded
     def get_send_hash(template)
       send_hash = base_send_hash(template)
       send_hash[:subject] = render_template_subject_type(@template)
-      send_hash[:to] = @to.nil? ? @user.email : @to
-      send_hash[:from] = @from unless @from.nil?
+      send_hash[:to] = @to.blank? ? @user.email : @to
+      send_hash[:from] = @from unless @from.blank?
       send_hash[:cc] = @cc.nil? ? nil : @cc
-      send_hash[:reply_to] = @reply_to unless @reply_to.nil?
+      send_hash[:reply_to] = @reply_to unless @reply_to.blank?
       send_hash
     end
 
@@ -17,8 +17,8 @@ module NoNotifierNeeded
       end
 
       base[:from] = "#{base.delete(:from_name)} <#{base.delete(:from_email)}>"
-      base[:from] = "#{template.from_name} <#{template.from_email}>" if template.from_name && template.from_email
-      base[:reply_to] = "#{template.reply_to}" if template.reply_to
+      base[:from] = "#{template.from_name} <#{template.from_email}>" unless template.from_name.blank? || template.from_email.blank?
+      base[:reply_to] = "#{template.reply_to}" unless template.reply_to.blank?
       base
     end
 
