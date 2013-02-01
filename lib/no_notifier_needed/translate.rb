@@ -40,9 +40,9 @@ module NoNotifierNeeded
 
     def known_models
       @known_models if @known_models
-      @known_models = ActiveRecord::Base.send( :subclasses )
-#      @known_models += @known_models.collect{|k| k.send(:subclasses) }.flatten.uniq
-#      @known_models.uniq!
+      @known_models = ActiveRecord::Base.send( :subclasses ).flatten.uniq
+      @known_models += @known_models.collect{|k| k.send(:subclasses) }.flatten.uniq
+      @known_models.uniq!
       @known_models
     end
   end
