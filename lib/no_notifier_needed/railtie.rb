@@ -1,10 +1,6 @@
 module NoNotifierNeeded
   class Railtie < Rails::Railtie
     initializer "Include code in controller" do
-      ActiveSupport.on_load(:active_record) do
-        require File.expand_path('../../../initializers/hotpatches/subclasses',  __FILE__)
-      end
-
       ActiveSupport.on_load(:action_controller) do
         require File.expand_path('../../../initializers/notifier',  __FILE__)
 

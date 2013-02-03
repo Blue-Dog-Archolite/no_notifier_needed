@@ -5,6 +5,7 @@ source "http://rubygems.org"
 gem 'haml'
 gem 'rails', '>= 3.2.11'
 gem 'metric_fu'
+gem "facets", "~> 2.9.3"
 
 group :test do
   gem 'debugger'

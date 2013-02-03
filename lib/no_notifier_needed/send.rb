@@ -17,10 +17,6 @@ module NoNotifierNeeded
     end
 
     private
-    def known_models
-      @known_models || @known_models = ActiveRecord::Base.send( :subclasses ).collect(&:name).uniq.sort
-    end
-
     def translate_to_hash(which_email, args)
       th = {}
       th[:which_email] = which_email
