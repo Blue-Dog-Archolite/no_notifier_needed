@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "2.0.7"
+  s.version = "2.0.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-02-01"
+  s.date = "2013-02-03"
   s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "initializers/hotpatches/subclasses.rb",
     "initializers/notifier.rb",
     "lib/generators/no_notifier_needed/install_generator.rb",
     "lib/generators/no_notifier_needed/templates/email_template.rb",
@@ -95,6 +94,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.2.11"])
       s.add_runtime_dependency(%q<metric_fu>, [">= 0"])
+      s.add_runtime_dependency(%q<facets>, ["~> 2.9.3"])
       s.add_development_dependency(%q<rails-pry>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
@@ -105,6 +105,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.2.11"])
       s.add_dependency(%q<metric_fu>, [">= 0"])
+      s.add_dependency(%q<facets>, ["~> 2.9.3"])
       s.add_dependency(%q<rails-pry>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
@@ -116,6 +117,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.2.11"])
     s.add_dependency(%q<metric_fu>, [">= 0"])
+    s.add_dependency(%q<facets>, ["~> 2.9.3"])
     s.add_dependency(%q<rails-pry>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
