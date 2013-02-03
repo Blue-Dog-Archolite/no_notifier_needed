@@ -53,6 +53,7 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.7)
     erubis (2.7.0)
+    facets (2.9.3)
     fattr (2.2.1)
     flay (1.2.1)
       hoe (>= 1.11.0)
@@ -192,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.2.3)
   debugger
+  facets (~> 2.9.3)
   haml
   jeweler (~> 1.8.4)
   metric_fu
