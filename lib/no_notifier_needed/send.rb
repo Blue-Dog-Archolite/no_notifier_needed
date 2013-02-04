@@ -33,7 +33,13 @@ module NoNotifierNeeded
       args.each do |a|
         next if a.blank?
         if a.is_a?(Hash)
-          a.each{|k,v| th[k.to_sym] = CGI.escapeHTML(v) }
+          a.each do|k,v|
+            if v.respond_to?(:gsub)
+              th[k.to_sym] = CGI.escapeHTML(v)
+            else
+              th[k.to_sym] = v
+            end
+          end
         elsif known_models.include?(a.class.name) || a.class.respond_to?(:column_names)
           th[a.class.name.downcase.to_sym] = a.id
         else
