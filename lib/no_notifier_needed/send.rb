@@ -17,6 +17,14 @@ module NoNotifierNeeded
     end
 
     private
+    def known_models
+      @known_models if @known_models
+      @known_models = ActiveRecord::Base.send( :descendants ).flatten.uniq
+      @known_models += @known_models.collect{|k| k.send(:descendants) }.flatten.uniq
+      @known_models.uniq!
+      @known_models
+    end
+
     def translate_to_hash(which_email, args)
       th = {}
       th[:which_email] = which_email
