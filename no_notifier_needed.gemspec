@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-02-04"
+  s.date = "2013-02-13"
   s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -93,8 +93,8 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.2.11"])
-      s.add_runtime_dependency(%q<metric_fu>, [">= 0"])
       s.add_runtime_dependency(%q<facets>, ["~> 2.9.3"])
+      s.add_development_dependency(%q<metric_fu>, [">= 0"])
       s.add_development_dependency(%q<rails-pry>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
@@ -104,8 +104,8 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.2.11"])
-      s.add_dependency(%q<metric_fu>, [">= 0"])
       s.add_dependency(%q<facets>, ["~> 2.9.3"])
+      s.add_dependency(%q<metric_fu>, [">= 0"])
       s.add_dependency(%q<rails-pry>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
@@ -116,8 +116,8 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.2.11"])
-    s.add_dependency(%q<metric_fu>, [">= 0"])
     s.add_dependency(%q<facets>, ["~> 2.9.3"])
+    s.add_dependency(%q<metric_fu>, [">= 0"])
     s.add_dependency(%q<rails-pry>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
