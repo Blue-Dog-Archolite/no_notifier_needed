@@ -19,10 +19,10 @@ end
 require 'bundler/gem_helper'
 Bundler::GemHelper.install_tasks(:name => 'no_notifier_needed')
 
-require 'metric_fu'
-MetricFu::Configuration.run do |config|
-  config.rcov[:rcov_opts] << "-Itest" # Needed to find test_helper
-end
+#require 'metric_fu'
+#MetricFu::Configuration.run do |config|
+#  config.rcov[:rcov_opts] << "-Itest" # Needed to find test_helper
+#end
 
 RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'

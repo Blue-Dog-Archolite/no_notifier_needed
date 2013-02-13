@@ -5,10 +5,9 @@ module NoNotifierNeeded
       raise "Email Template name not found" if @template.nil?
 
       if @template.send_via_mandrill?
-        raise "FUCK OFF"
-        self.smtp_settings = {
+        ActionMailer::Base.smtp_settings = {
           :address   => "smtp.mandrillapp.com",
-          :port      => 25, # or 587
+          :port      => NoNotifierNeeded.port,
           :enable_starttls_auto => true, # detects and uses STARTTLS
           :user_name => NoNotifierNeeded.mandrill_user_name,
           :password  => NoNotifierNeeded.mandrill_password,
