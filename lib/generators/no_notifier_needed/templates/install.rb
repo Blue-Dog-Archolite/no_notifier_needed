@@ -8,6 +8,7 @@ class <%= migration_class_name %> < ActiveRecord::Migration
       t.string :reply_to
       t.string :body
       t.string :template_type
+      t.boolean :send_via_mandrill, :default => false, :null => false
     end
   end
 

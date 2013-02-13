@@ -4,7 +4,11 @@ source "http://rubygems.org"
 #   gem "activesupport", ">= 2.3.5"
 gem 'haml'
 gem 'rails', '>= 3.2.11'
-gem 'metric_fu'
+
+group :development, :test do
+  gem 'metric_fu'
+end
+
 gem "facets", "~> 2.9.3"
 
 group :test do

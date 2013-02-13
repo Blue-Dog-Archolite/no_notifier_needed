@@ -8,7 +8,9 @@ module NoNotifierNeeded
       :reply_to,
       :host,
       :controller,
-      :action
+      :action,
+      :mandrill_user_name,
+      :mandrill_password
     ].freeze
 
     # @private
