@@ -7,7 +7,7 @@ module NoNotifierNeeded
       if @template.send_via_mandrill?
         ActionMailer::Base.smtp_settings = {
           :address   => "smtp.mandrillapp.com",
-          :port      => NoNotifierNeeded.port,
+          :port      => NoNotifierNeeded.mandrill_port,
           :enable_starttls_auto => true, # detects and uses STARTTLS
           :user_name => NoNotifierNeeded.mandrill_user_name,
           :password  => NoNotifierNeeded.mandrill_password,
