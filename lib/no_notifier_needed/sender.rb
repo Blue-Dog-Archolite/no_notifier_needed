@@ -4,9 +4,6 @@ module NoNotifierNeeded
       @template = EmailTemplate.find_by_name(email_name)
       raise "Email Template name not found" if @template.nil?
 
-      debugger
-
-      raise @email_template.inspect
       if @template.send_via_mandrill?
         raise "FUCK OFF"
         self.smtp_settings = {
