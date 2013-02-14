@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-#  helper :application, :notifier
+  #  helper :application, :notifier
 
   #Includes to Help with Rendering
   include Rails.application.routes.url_helpers # brings ActionDispatch::Routing::UrlFor
@@ -14,6 +14,17 @@ class Notifier < ActionMailer::Base
   def mcp(email_name, args)
     @template = EmailTemplate.find_by_name(email_name)
     raise "Email Template name not found" if @template.nil?
+
+    if @template.send_via_mandrill?
+      Notifier.smtp_settings = {
+        :address   => "smtp.mandrillapp.com",
+        :port      => NoNotifierNeeded.mandrill_port,
+        :enable_starttls_auto => true, # detects and uses STARTTLS
+        :user_name => NoNotifierNeeded.mandrill_user_name,
+        :password  => NoNotifierNeeded.mandrill_password,
+        :authentication => 'login' # Mandrill supports 'plain' or 'login'
+      }
+    end
 
     args_to_instance_vars(args)
 

@@ -9,9 +9,6 @@ require 'no_notifier_needed/railtie'
 module NoNotifierNeeded
   extend Config
   extend Send
-#  include Render
-#  include Translate
-#  include Sender
 
   def self.sender(options={})
     NoNotifierNeeded::Sender.new(options)
@@ -30,5 +27,3 @@ module NoNotifierNeeded
     return sender.respond_to?(method) || super
   end
 end
-
-#require 'no_notifier_needed/railtie.rb' if defined?(Rails)
