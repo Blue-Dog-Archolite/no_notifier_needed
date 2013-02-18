@@ -15,7 +15,7 @@ class Notifier < ActionMailer::Base
     @template = EmailTemplate.find_by_name(email_name)
     raise "Email Template name not found" if @template.nil?
 
-    if @template.send_via_mandrill?
+    if @template.respond_to?(:send_via_mandrill) && @template.send_via_mandrill?
       Notifier.smtp_settings = {
         :address   => "smtp.mandrillapp.com",
         :port      => NoNotifierNeeded.mandrill_port,
