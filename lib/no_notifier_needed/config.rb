@@ -11,7 +11,9 @@ module NoNotifierNeeded
       :action,
       :mandrill_user_name,
       :mandrill_password,
-      :mandrill_port
+      :mandrill_port,
+      :current_user_model,
+      :current_user_id_method,
     ].freeze
 
     # @private

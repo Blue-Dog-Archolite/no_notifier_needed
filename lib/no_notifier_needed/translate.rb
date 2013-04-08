@@ -6,8 +6,6 @@ module NoNotifierNeeded
         send_hash[k] = NoNotifierNeeded.send(k)
       end
 
-
-
       send_hash[:subject] = render_template_subject_type(@template)
 
       send_hash[:to] = @to if @to
@@ -29,6 +27,7 @@ module NoNotifierNeeded
     def args_to_instance_vars(args)
       #take each key, if a model, make it an @#{model} = model.find(value)
       #else make it a @#{name}=#{value}
+
       args.each do |k,v|
         if Object.const_defined?(k.classify) && known_models.include?(k.classify.constantize)
           self.instance_eval("@#{k}= #{k.classify}.find(#{v})")
@@ -39,6 +38,11 @@ module NoNotifierNeeded
             self.instance_eval("@#{k}=#{v}")
           end
         end
+      end
+
+      if args.has_key?("current_user")
+        k = NoNotifierNeeded.send(:current_user_model)
+        self.instance_eval("@current_user = #{k.classify}.find(#{args['current_user']})")
       end
     end
 

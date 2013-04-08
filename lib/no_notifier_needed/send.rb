@@ -13,6 +13,7 @@ module NoNotifierNeeded
     def send_at(what_time, which_email, *args)
       email_hash = translate_to_hash(which_email, args)
       time_from_now = what_time.is_a?(Time) ? what_time : Chronic.parse(what_time)
+      raise ActionDispatch::Request.new(ENV).session.inspect
       Resque.enqueue_at(time_from_now, EmailProcessor, email_hash)
     end
 
@@ -28,6 +29,10 @@ module NoNotifierNeeded
     def translate_to_hash(which_email, args)
       th = {}
       th[:which_email] = which_email
+
+      if NoNotifierNeeded.send(:current_user_model)
+        th[:current_user] = instance_eval(NoNotifierNeeded.send(:current_user_id_method))
+      end
 
       args = args.flatten if args.respond_to?(:flatten)
       args.each do |a|
