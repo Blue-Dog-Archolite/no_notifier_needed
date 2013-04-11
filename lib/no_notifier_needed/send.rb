@@ -31,7 +31,8 @@ module NoNotifierNeeded
       th[:which_email] = which_email
 
       if NoNotifierNeeded.send(:current_user_model)
-        th[:current_user] = instance_eval(NoNotifierNeeded.send(:current_user_id_method))
+        current_user_id = instance_eval(NoNotifierNeeded.send(:current_user_id_method))
+        th[:current_user] = current_user_id if current_user_id
       end
 
       args = args.flatten if args.respond_to?(:flatten)
