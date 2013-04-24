@@ -8,7 +8,8 @@ module NoNotifierNeeded
 
       send_hash[:subject] = render_template_subject_type(@template)
 
-      send_hash[:to] = @to if @to
+      send_hash[:to] = @to if @to && !@to.is_a?(Array)
+      send_hash[:to] = @to
       send_hash[:to] ||= @user.email if @user
       send_hash[:to] ||= template.sent_to.split(',')
 
@@ -29,6 +30,7 @@ module NoNotifierNeeded
       #else make it a @#{name}=#{value}
 
       args.each do |k,v|
+        k, v = k.to_s, v.to_s
         if Object.const_defined?(k.classify) && known_models.include?(k.classify.constantize)
           self.instance_eval("@#{k}= #{k.classify}.find(#{v})")
         else
