@@ -29,6 +29,7 @@ module NoNotifierNeeded
       #else make it a @#{name}=#{value}
 
       args.each do |k,v|
+        k, v = k.to_s, v.to_s
         if Object.const_defined?(k.classify) && known_models.include?(k.classify.constantize)
           self.instance_eval("@#{k}= #{k.classify}.find(#{v})")
         else
