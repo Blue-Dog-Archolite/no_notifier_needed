@@ -25,15 +25,16 @@ class Notifier < ActionMailer::Base
         :authentication => 'login' # Mandrill supports 'plain' or 'login'
       }
     else
+      pwd = NoNotifierNeeded.gmail_password.first
       Notifier.smtp_settings = {
-          address:              'smtp.gmail.com',
-          port:                 587,
-          domain:               NoNotifierNeeded.domain,
-          user_name:            NoNotifierNeeded.gmail_user_name,
-          password:             NoNotifierNeeded.gmail_password,
-          authentication:       'login',
-          enable_starttls_auto: true
-        }
+        :address    => 'smtp.gmail.com',
+        :port       =>  587,
+        :domain     => NoNotifierNeeded.domain,
+        :user_name  => NoNotifierNeeded.gmail_user_name,
+        :password   => pwd,
+        :authentication => 'login',
+        :enable_starttls_auto => true
+      }
     end
 
     args_to_instance_vars(args)

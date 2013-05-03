@@ -14,8 +14,8 @@ module NoNotifierNeeded
       :mandrill_port,
       :current_user_model,
       :current_user_id_method,
-      :gmail_password,
       :gmail_user_name,
+      :gmail_password,
       :domain
     ].freeze
 
