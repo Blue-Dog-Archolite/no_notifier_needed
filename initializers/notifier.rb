@@ -24,12 +24,12 @@ class Notifier < ActionMailer::Base
         :password  => NoNotifierNeeded.mandrill_password,
         :authentication => 'login' # Mandrill supports 'plain' or 'login'
       }
-    else
+    elsif @template.respond_to?(:send_via_gmail) && @template.send_via_gmail?
       pwd = NoNotifierNeeded.gmail_password.first
       Notifier.smtp_settings = {
         :address    => 'smtp.gmail.com',
         :port       =>  587,
-        :domain     => NoNotifierNeeded.domain,
+        :domain     => NoNotifierNeeded.gmail_domain,
         :user_name  => NoNotifierNeeded.gmail_user_name,
         :password   => pwd,
         :authentication => 'login',

@@ -2,21 +2,30 @@ module NoNotifierNeeded
   module Config
 
     VALID_OPTIONS_KEYS = [
+      #Defaults
       :from_email,
       :from_name,
       :bcc,
       :reply_to,
+
+      #Url Options
       :host,
       :controller,
       :action,
+
+      #mandrill options
       :mandrill_user_name,
       :mandrill_password,
       :mandrill_port,
+
+      #current User options
       :current_user_model,
       :current_user_id_method,
+
+      #Gmail options
       :gmail_user_name,
       :gmail_password,
-      :domain
+      :gmail_domain
     ].freeze
 
     # @private
