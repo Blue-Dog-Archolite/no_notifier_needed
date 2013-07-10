@@ -34,7 +34,7 @@ module NoNotifierNeeded
           self.instance_eval("@#{k}= #{k.classify}.find(#{v})")
         else
           if v.is_a?(String)
-            self.instance_eval("@#{k} = \"#{v}\"")
+            self.instance_eval("@#{k} = %|#{v}|")
           else
             self.instance_eval("@#{k}=#{v}")
           end
