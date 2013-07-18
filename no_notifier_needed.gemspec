@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "no_notifier_needed"
-  s.version = "2.3.4"
+  s.version = "2.3.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Robert R. Meyer"]
-  s.date = "2013-04-15"
+  s.date = "2013-07-10"
   s.description = "A work in progress: Replace ActionMailer::Base class redundency. Temlating using haml or erb."
   s.email = "Blue.Dog.Archolite@gmail.com"
   s.extra_rdoc_files = [
@@ -94,36 +94,45 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<haml>, [">= 0"])
       s.add_runtime_dependency(%q<rails>, [">= 3.2.11"])
       s.add_runtime_dependency(%q<facets>, ["~> 2.9.3"])
-      s.add_development_dependency(%q<metric_fu>, [">= 0"])
+      s.add_runtime_dependency(%q<mandrill-api>, [">= 0"])
+      s.add_development_dependency(%q<script_finder>, [">= 0"])
+      s.add_development_dependency(%q<debugger>, [">= 0"])
       s.add_development_dependency(%q<rails-pry>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 1.2.3"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<mail>, [">= 0"])
     else
       s.add_dependency(%q<haml>, [">= 0"])
       s.add_dependency(%q<rails>, [">= 3.2.11"])
       s.add_dependency(%q<facets>, ["~> 2.9.3"])
-      s.add_dependency(%q<metric_fu>, [">= 0"])
+      s.add_dependency(%q<mandrill-api>, [">= 0"])
+      s.add_dependency(%q<script_finder>, [">= 0"])
+      s.add_dependency(%q<debugger>, [">= 0"])
       s.add_dependency(%q<rails-pry>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 1.2.3"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<mail>, [">= 0"])
     end
   else
     s.add_dependency(%q<haml>, [">= 0"])
     s.add_dependency(%q<rails>, [">= 3.2.11"])
     s.add_dependency(%q<facets>, ["~> 2.9.3"])
-    s.add_dependency(%q<metric_fu>, [">= 0"])
+    s.add_dependency(%q<mandrill-api>, [">= 0"])
+    s.add_dependency(%q<script_finder>, [">= 0"])
+    s.add_dependency(%q<debugger>, [">= 0"])
     s.add_dependency(%q<rails-pry>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 1.2.3"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.4"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<mail>, [">= 0"])
   end
 end
 

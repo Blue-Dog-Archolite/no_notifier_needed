@@ -15,6 +15,9 @@ class Notifier < ActionMailer::Base
     @template = EmailTemplate.find_by_name(email_name)
     raise "Email Template name not found" if @template.nil?
 
+
+    #configure this to only run as one block depending on what the template responds to
+
     if @template.respond_to?(:send_via_mandrill) && @template.send_via_mandrill?
       Notifier.smtp_settings = {
         :address   => "smtp.mandrillapp.com",
@@ -23,6 +26,18 @@ class Notifier < ActionMailer::Base
         :user_name => NoNotifierNeeded.mandrill_user_name,
         :password  => NoNotifierNeeded.mandrill_password,
         :authentication => 'login' # Mandrill supports 'plain' or 'login'
+      }
+
+    elsif @template.respond_to?(:send_via_gmail) && @template.send_via_gmail?
+      pwd = NoNotifierNeeded.gmail_password.first
+      Notifier.smtp_settings = {
+        :address    => 'smtp.gmail.com',
+        :port       =>  587,
+        :domain     => NoNotifierNeeded.gmail_domain,
+        :user_name  => NoNotifierNeeded.gmail_user_name,
+        :password   => pwd,
+        :authentication => 'login',
+        :enable_starttls_auto => true
       }
     end
 
