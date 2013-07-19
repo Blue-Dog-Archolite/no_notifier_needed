@@ -41,6 +41,7 @@ class Notifier < ActionMailer::Base
       }
     end
 
+    @template.params = args
     args_to_instance_vars(args)
 
     send_hash = get_send_hash(@template)
@@ -59,9 +60,9 @@ class Notifier < ActionMailer::Base
     instance_eval to_send
   end
 
-  def email_link_to(title, link)
+  def email_link_to(title, link, opts={})
     return title if link.blank?
-    if link.match(/http:\/\/[\w*\.]*\//i)
+    if link.match(/http:|https:\/\/[\w*\.]*\//i)
       root_link = link
     else
       splitter = NoNotifierNeeded.send(:host).split('/').last
@@ -74,6 +75,15 @@ class Notifier < ActionMailer::Base
         root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
       end
     end
-    "<a href='#{root_link}'>#{title}</a>"
+    "<a href='#{root_link}' #{html_opts(opts)}>#{title}</a>"
   end
+
+  def html_opts(opts)
+    to_ret = []
+    opts.each do |k,v|
+      to_ret << "#{k.to_s}='#{v}'"
+    end
+    to_ret.join(" ")
+  end
+
 end
