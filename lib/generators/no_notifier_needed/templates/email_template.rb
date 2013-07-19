@@ -5,6 +5,8 @@ class EmailTemplate < ActiveRecord::Base
     :email_template_comments_attributes, :from_name, :from_email, :reply_to, :send_via_mandrill,
     :send_via_gmail
 
+  attr_accessor :params
+
   def clean_inputs
     body.strip!
     subject.strip!
