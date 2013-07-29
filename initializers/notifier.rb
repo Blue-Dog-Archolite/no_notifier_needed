@@ -65,17 +65,21 @@ class Notifier < ActionMailer::Base
     if link.match(/http:|https:\/\/[\w*\.]*\//i)
       root_link = link
     else
-      splitter = NoNotifierNeeded.send(:host).split('/').last
-
-      link_broken = link.split(splitter).last
-      link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
-      if NoNotifierNeeded.send(:host).last == "/"
-        root_link = NoNotifierNeeded.send(:host) + link_broken
-      else
-        root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
-      end
+      root_link = email_href_for(link)
     end
     "<a href='#{root_link}' #{html_opts(opts)}>#{title}</a>"
+  end
+
+  def email_href_for(link)
+    splitter = NoNotifierNeeded.send(:host).split('/').last
+
+    link_broken = link.split(splitter).last
+    link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
+    if NoNotifierNeeded.send(:host).last == "/"
+      root_link = NoNotifierNeeded.send(:host) + link_broken
+    else
+      root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
+    end
   end
 
   def html_opts(opts)
