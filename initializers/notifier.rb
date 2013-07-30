@@ -67,7 +67,7 @@ class Notifier < ActionMailer::Base
     else
       root_link = email_href_for(link)
     end
-    "<a href='#{root_link + utm_params}' #{html_opts(opts)}>#{title}</a>"
+    "<a href='#{root_link}' #{html_opts(opts)}>#{title}</a>"
   end
 
   def email_href_for(link)
@@ -80,6 +80,7 @@ class Notifier < ActionMailer::Base
     else
       root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
     end
+    root_link + utm_params
   end
 
   def html_opts(opts)
