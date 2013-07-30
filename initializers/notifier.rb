@@ -91,12 +91,12 @@ class Notifier < ActionMailer::Base
     to_ret.join(" ")
   end
 
-  def utm_params(utm)
+  def utm_params
     return "" unless @template.respond_to?(:utm_params)
     utm = @template.utm_params
     to_ret = utm if utm.is_a?(String)
     to_ret = utm.join("&") if utm.is_a?(Array)
-    to_ret = utm.collect { |k,v| "#{k}=#{v}"}.join("&")
+    to_ret = utm.collect { |k,v| "#{k}=#{v}"}.join("&") if utm.is_a?(Hash)
     return "?" + to_ret
   end
 
