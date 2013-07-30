@@ -65,17 +65,22 @@ class Notifier < ActionMailer::Base
     if link.match(/http:|https:\/\/[\w*\.]*\//i)
       root_link = link
     else
-      splitter = NoNotifierNeeded.send(:host).split('/').last
-
-      link_broken = link.split(splitter).last
-      link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
-      if NoNotifierNeeded.send(:host).last == "/"
-        root_link = NoNotifierNeeded.send(:host) + link_broken
-      else
-        root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
-      end
+      root_link = email_href_for(link)
     end
     "<a href='#{root_link}' #{html_opts(opts)}>#{title}</a>"
+  end
+
+  def email_href_for(link)
+    splitter = NoNotifierNeeded.send(:host).split('/').last
+
+    link_broken = link.split(splitter).last
+    link_broken = link_broken.split('/').reject{|e| e.blank?}.join('/')
+    if NoNotifierNeeded.send(:host).last == "/"
+      root_link = NoNotifierNeeded.send(:host) + link_broken
+    else
+      root_link = NoNotifierNeeded.send(:host) + "/" + link_broken
+    end
+    root_link + utm_params
   end
 
   def html_opts(opts)
@@ -84,6 +89,15 @@ class Notifier < ActionMailer::Base
       to_ret << "#{k.to_s}='#{v}'"
     end
     to_ret.join(" ")
+  end
+
+  def utm_params(utm)
+    return "" unless @template.respond_to?(:utm_params)
+    utm = @template.utm_params
+    to_ret = utm if utm.is_a?(String)
+    to_ret = utm.join("&") if utm.is_a?(Array)
+    to_ret = utm.collect { |k,v| "#{k}=#{v}"}.join("&")
+    return "?" + to_ret
   end
 
 end
