@@ -67,7 +67,7 @@ class Notifier < ActionMailer::Base
     else
       root_link = email_href_for(link)
     end
-    "<a href='#{root_link}' #{html_opts(opts)}>#{title}</a>"
+    "<a href='#{root_link + "?" + utm_params}' #{html_opts(opts)}>#{title}</a>"
   end
 
   def email_href_for(link)
@@ -88,6 +88,13 @@ class Notifier < ActionMailer::Base
       to_ret << "#{k.to_s}='#{v}'"
     end
     to_ret.join(" ")
+  end
+
+  def utm_params(utm)
+    utm = @template.utm_params
+    return utm if utm.is_a?(String)
+    return utm.join("&") if utm.is_a?(Array)
+    return utm.collect { |k,v| "#{k}=#{v}"}.join("&")
   end
 
 end
