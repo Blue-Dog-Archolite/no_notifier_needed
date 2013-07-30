@@ -92,7 +92,7 @@ class Notifier < ActionMailer::Base
   end
 
   def utm_params
-    return "" unless @template.respond_to?(:utm_params)
+    return "" unless @template.respond_to?(:utm_params) && @template.utm_params
     utm = @template.utm_params
     to_ret = utm if utm.is_a?(String)
     to_ret = utm.join("&") if utm.is_a?(Array)
