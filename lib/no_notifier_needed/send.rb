@@ -7,7 +7,7 @@ module NoNotifierNeeded
 
     def send_in(time_from_now, which_email, *args)
       email_hash = translate_to_hash(which_email, args)
-      Resque.enqueue_at(time_from_now, EmailProcessor, email_hash)
+      Resque.enqueue_in(time_from_now, EmailProcessor, email_hash)
     end
 
     def send_at(what_time, which_email, *args)
