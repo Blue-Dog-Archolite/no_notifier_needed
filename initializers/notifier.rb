@@ -18,6 +18,7 @@ class Notifier < ActionMailer::Base
 
     #configure this to only run as one block depending on what the template responds to
 
+=begin
     if @template.respond_to?(:send_via_mandrill) && @template.send_via_mandrill?
       Notifier.smtp_settings = {
         :address   => "smtp.mandrillapp.com",
@@ -25,7 +26,8 @@ class Notifier < ActionMailer::Base
         :enable_starttls_auto => true, # detects and uses STARTTLS
         :user_name => NoNotifierNeeded.mandrill_user_name,
         :password  => NoNotifierNeeded.mandrill_password,
-        :authentication => 'login' # Mandrill supports 'plain' or 'login'
+        :authentication => 'login', # Mandrill supports 'plain' or 'login'
+        :domain => NoNotifierNeeded.domain
       }
 
     elsif @template.respond_to?(:send_via_gmail) && @template.send_via_gmail?
@@ -37,9 +39,11 @@ class Notifier < ActionMailer::Base
         :user_name  => NoNotifierNeeded.gmail_user_name,
         :password   => pwd,
         :authentication => 'login',
-        :enable_starttls_auto => true
+        :enable_starttls_auto => true,
+        :domain => NoNotifierNeeded.domain
       }
     end
+=end
 
     @template.params = args
     args_to_instance_vars(args)
