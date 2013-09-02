@@ -3,6 +3,7 @@ gem 'haml'
 gem 'rails', '>= 3.2.11'
 gem "facets", "~> 2.9.3"
 gem 'mandrill-api'
+gem 'rake', '0.9.6'
 
 group :test do
   gem 'sqlite3'
